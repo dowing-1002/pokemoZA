@@ -1,9 +1,25 @@
-#include <NintendoSwitchControlLibrary.h>
+#include	"main.h"
+#include	"morning_evening.h"
 
+/* 関数宣言 */
+static void main_Connect_NintendoSw_init();
+
+/* setup */
 void setup(){
-	pushButton(Button::B, 500, 5);		/* Switchがマイコンを認識するまでは信号を受け付けないため、適当な処理をさせておく */
+	/* 起動時、「持ち方/順番を変える」になっている前提 */
+	main_Connect_NintendoSw_init();
 }
 
+/* loop */
 void loop(){
+	morning_to_evening();
+}
 
+/* 起動時の処理 */
+static void main_Connect_NintendoSw_init()
+{
+	/* コントローラ認識処理実施 */
+	pushButton(Button::L, DELAY_500MS, 5);			/* Switchがにマイコンを認識させる処理(500msごとに2回L押下) */
+	/* コントローラ認識済み */
+	pushButton(Button::HOME, DELAY_1S*2,2);			/* homeに戻る、ゲームに戻る */
 }

@@ -1,0 +1,35 @@
+{
+  "build": {
+    "core": "arduino",
+    "extra_flags": "-DARDUINO_AVR_LEONARDO",
+    "f_cpu": "16000000L",
+    "mcu": "atmega32u4",
+
+    "variant": "leonardo",
+
+    "hwids": [
+      [
+        "0x0F0D",
+        "0x0092"
+      ]
+    ],
+    "usb_product": "POKKEN CONTROLLER",
+    "usb_manufacturer": "HORI CO.,LTD."
+  },
+  "frameworks": [
+    "arduino"
+  ],
+  "name": "Leonardo Pokken (Custom)",
+  "upload": {
+    "disable_flushing": true,
+    "maximum_ram_size": 2560,
+    "maximum_size": 28672,
+    "protocol": "avr109",
+    "require_upload_port": true,
+    "speed": 57600,
+    "use_1200bps_touch": true,
+    "wait_for_upload_port": true
+  },
+  "url": "https://www.arduino.cc/en/Main/ArduinoBoardLeonardo",
+  "vendor": "Arduino"
+}

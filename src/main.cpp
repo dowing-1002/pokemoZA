@@ -1,18 +1,9 @@
-#include <Arduino.h>
+#include <NintendoSwitchControlLibrary.h>
 
-// put function declarations here:
-int myFunction(int, int);
-
-void setup() {
-  // put your setup code here, to run once:
-  int result = myFunction(2, 3);
+void setup(){
+	pushButton(Button::B, 500, 5);		/* Switchがマイコンを認識するまでは信号を受け付けないため、適当な処理をさせておく */
 }
 
-void loop() {
-  // put your main code here, to run repeatedly:
-}
+void loop(){
 
-// put function definitions here:
-int myFunction(int x, int y) {
-  return x + y;
 }

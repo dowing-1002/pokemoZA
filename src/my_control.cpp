@@ -54,3 +54,44 @@ void moveAndRenda(uint8_t lx, uint8_t ly, unsigned long total_time, unsigned lon
     SwitchControlLibrary().sendReport();
     delay(DELAY_100MS);
 }
+
+/**
+ * @brief 右スティックを押し込む (RSTICK)
+ */
+void pushRStick() {
+/* 1. 右スティックを押し込む */
+    SwitchControlLibrary().pressButton(Button::RCLICK);
+    SwitchControlLibrary().sendReport();
+    
+    /* 2. 認識されるまで待つ */
+    delay(DELAY_100MS);
+    
+    /* 3. 右スティックを離す */
+    SwitchControlLibrary().releaseButton(Button::RCLICK);
+    SwitchControlLibrary().sendReport();
+    
+    /* 4. 次の操作までの間隔 */
+    delay(DELAY_100MS);
+}
+
+/**
+ * @brief ZLを押しっぱなしにする
+ */
+void pressZL() {
+    SwitchControlLibrary().pressButton(Button::ZL);
+    SwitchControlLibrary().releaseButton(Button::A); /* 念のため */
+    SwitchControlLibrary().sendReport();
+    /* ZLが認識されるまで待つ */
+    delay(DELAY_100MS);
+}
+
+/**
+ * @brief ZLを離す
+ */
+void releaseZL() {
+    SwitchControlLibrary().releaseButton(Button::ZL);
+    SwitchControlLibrary().releaseButton(Button::A); /* 念のため */
+    SwitchControlLibrary().sendReport();
+    /* 離れたことを認識させる */
+    delay(DELAY_100MS);
+}

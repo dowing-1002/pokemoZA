@@ -57,42 +57,25 @@ void moveAndRenda(uint8_t lx, uint8_t ly, uint16_t button, unsigned long total_t
 }
 
 /**
- * @brief 右スティックを押し込む (RSTICK)
+ * @brief button1を押したまま、button2を押し、その後、buttun1を解除する
+ * @note　ポケモンZAで技を使いたい時はbutton1にZA、使いたい技をbutton2にする
  */
-void pushRStick() {
-/* 1. 右スティックを押し込む */
-    SwitchControlLibrary().pressButton(Button::RCLICK);
+void HoldAndPushButton(uint16_t button1,uint16_t button2) {
+	SwitchControlLibrary().pressButton(button1);	/* button1を押す */
     SwitchControlLibrary().sendReport();
-    
-    /* 2. 認識されるまで待つ */
-    delay(DELAY_100MS);
-    
-    /* 3. 右スティックを離す */
-    SwitchControlLibrary().releaseButton(Button::RCLICK);
-    SwitchControlLibrary().sendReport();
-    
-    /* 4. 次の操作までの間隔 */
-    delay(DELAY_100MS);
-}
+    delay(DELAY_100MS*5);
 
-/**
- * @brief ZLを押しっぱなしにする
- */
-void pressZL() {
-    SwitchControlLibrary().pressButton(Button::ZL);
-    SwitchControlLibrary().releaseButton(Button::A); /* 念のため */
+    SwitchControlLibrary().pressButton(button1); 	/* button1を押し続ける */
+    SwitchControlLibrary().pressButton(button2);	/* button2を押す */
     SwitchControlLibrary().sendReport();
-    /* ZLが認識されるまで待つ */
-    delay(DELAY_100MS);
-}
+    delay(DELAY_100MS*5);
 
-/**
- * @brief ZLを離す
- */
-void releaseZL() {
-    SwitchControlLibrary().releaseButton(Button::ZL);
-    SwitchControlLibrary().releaseButton(Button::A); /* 念のため */
+	SwitchControlLibrary().pressButton(button1);	/* button1は押し続ける */
+    SwitchControlLibrary().releaseButton(button2);	/* button2の解除 */
     SwitchControlLibrary().sendReport();
-    /* 離れたことを認識させる */
-    delay(DELAY_100MS);
+    delay(DELAY_100MS*5);
+
+	SwitchControlLibrary().releaseButton(button1);	/* button1の解除 */
+    SwitchControlLibrary().sendReport();
+    delay(DELAY_100MS*5);
 }

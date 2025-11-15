@@ -6,8 +6,8 @@
 #define	FUNC_OFF	0	/* 機能無効 */
 
 /* 機能選択 */
-#define	BENCHSKIP			FUNC_OFF	/* ベンチで朝晩スキップすることでの厳選 */
-#define	YUKARI_TOURNAMENT	FUNC_ON		/* ゆかりトーナメントでの金策レベリング */
+#define	BENCHSKIP			FUNC_ON	/* ベンチで朝晩スキップすることでの厳選 */
+#define	YUKARI_TOURNAMENT	FUNC_OFF		/* ゆかりトーナメントでの金策レベリング */
 
 /* 不正な設定かを確認する */
 #define	FWSETTING_NUM	(BENCHSKIP + YUKARI_TOURNAMENT)	/* 選択されている機能数 */
